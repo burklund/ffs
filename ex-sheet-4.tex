@@ -1,0 +1,188 @@
+\pdfoutput=1\relax
+\documentclass[reqno]{amsart}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\input{Preamble.tex}
+\usepackage[margin=1.5in]{geometry}
+
+\newtoggle{draft}
+% NB: toggle this to hide comments
+%\togglefalse{draft}
+\toggletrue{draft}
+
+\iftoggle{draft}{
+%\usepackage{showkeys}
+\newcommand{\atodo}[1]{\todo[color=blue!40]{#1}}
+\newcommand{\ttodo}[1]{\todo[color=green!40]{#1}}
+\newcommand{\tcomment}[1]{\todo[inline,color=green!40]{#1}}
+\newcommand{\NB}[1]{\todo[color=gray!40]{#1}}
+\newcommand{\TODO}[1]{\todo[color=red]{#1}}
+}{ % else
+\newcommand{\NB}[1]{}
+\newcommand{\TODO}[1]{}
+\renewcommand{\todo}[1]{}
+\renewcommand{\todo}[1]{}
+}
+
+\title{Exercise sheet 3}
+
+%% \author{Robert Burklund}
+%% \address{Department of Mathematical Sciences, University of Copenhagen, Denmark}
+%% \email{rb@math.ku.dk}
+
+\begin{document}
+\maketitle
+
+
+\section*{\bf Background}
+
+The first $13$ stable homotopy groups of the $2$-local sphere $\Ss_{(2)}$ can be computed using only the Serre spectral sequence. 
+These groups (and the ring structure) are given in the table below:
+
+\begin{center}
+  \begin{tabular}{|c|c|c|c|}\hline
+    stem & group & generator & relations \\\hline\hline
+    0 & $\Z$ & $1$ & \\\hline
+    1 & $\Z/2$ & $\eta$ & \\\hline
+    2 & $\Z/2$ & $\eta^2$ & \\\hline
+    3 & $\Z/8$ & $\nu$ & $\eta^3 = 4\nu$ \\\hline
+    4 & $0$ & & \\\hline
+    5 & $0$ & & \\\hline
+    6 & $\Z/2$ & $\nu^2$ & \\\hline
+    7 & $\Z/16$ & $\sigma$ & \\\hline
+    8 & $\Z/2 \oplus \Z/2$ & $\eta\sigma$, $\epsilon$ & \\\hline
+    9 & $\Z/2 \oplus \Z/2 \oplus \Z/2$ & $\eta^2\sigma$, $\eta\epsilon$, $\mu_9$ & $\nu^3 = \eta^2\sigma + \eta\epsilon$ \\\hline
+    10 & $\Z/2$ & $\eta\mu_9$ & \\\hline
+    11 & $\Z/8$ & $\zeta$ & $\eta^2\mu_9 = 4\zeta$ \\\hline
+    12 & $0$ & & \\\hline
+    13 & $0$& & \\\hline
+  \end{tabular}
+\end{center}
+
+
+\section{\bf Exercise 1: The homotopy of $\KO$ (hfp approach)}
+
+$\mathrm{KO}$ is an $\E_\infty$-algebra in $\Sp$ whose associated cohomology theory
+classifies stable vector bundles.
+Similarly, $\mathrm{KU}$ is an $\E_\infty$-algebra in $\Sp$ whose associated cohomology theory
+classifies stable complex vector bundles.
+Complexification of vector bundles induces a map of $\E_{\infty}$-algebras
+$\KO \to \KU,$
+furthermore complex conjugation provides a $C_2$-action on $\KU$ such that
+$\KO \cong \KU^{hC_2}$.
+
+The $C_2$ action on $\KU$ by complex conjugation
+sends the generator $\beta$ in $\pi_2\KU$ to $-\beta$.
+
+\begin{itemize}
+\item[(0 (bonus))] Using your understanding of complex vector bundles prove that
+  complex conjugatin acts by $-1$ on $\pi_2\KU$.
+\item[(a)] Determine the $E_2$-page of the $C_2$-homotopy fixed point sseq which has signature
+  \[ E_2^{s,t} \Rightarrow \pi_{t-s}(\KU^{hC_2}). \]
+\end{itemize}
+
+In order to proceed we will need one more piece of information:
+The image of the class $\eta \in \pi_1\Ss$ in $\pi_1\KO$ is non-zero and
+moreover this class is detected in the $C_2$-hfp sseq in $E_\infty^{1,2}$.
+With this information in hand we will now investigate the $C_2$-homotopy fixed point sseq.
+
+\begin{itemize}
+\item[(b)] Determine the differentials in the $C_2$-hfp sseq for $\KU^{hC_2}$.
+\item[(c)] Determine the ring of homotopy groups $\pi_*\KO$.
+\item[(d)] Determine the bigraded homotopy ring of the filtered ring spectrum
+  $(\tau_{\geq \bullet} \KU)^{hC_2}$ underlying the $C_2$-hfp sseq.
+\end{itemize}
+
+\section{\bf Exercise 5: Slicing sseqs}
+
+\begin{itemize}
+\item[(a)] Determine the homotopy groups of $\ku^{hC_2}$ where the action is by complex conjugation (recall that $\ku$ is the connective cover of $\KU$). Observe that $\ku^{hC_2}$ is not $\ko$.
+\end{itemize}
+
+In the remainder of this exercise we will explore the idea of ``slicing'' spectral sequences.
+Let $\left( {}^aE_r^{s,t}, d_r \right)$ and $\left( {}^bE_r^{s,t}, d_r \right)$
+be a pair of sseqs and suppose we have a  map
+\[ \left( {}^AE_r^{s,t}, d_r \right) \to \left( {}^BE_r^{s,t}, d_r \right) \]
+between them.
+
+\begin{itemize}
+\item[(b)] Let $(m,c)$ be.
+  Suppose that the map of $E_2$-pages is an isomorphism
+  for $s \geq m(t-s) + c$ and
+  ${}^A E_2^{s,t} = 0$ for $s < m(t-s) + c$.
+  For which $(m,c)$ can the differentials in the $A$-sseq be deduced from the
+  differentials in the $B$-sseq.
+\item[(c)] Under the hypotheses of (b)
+  with $(m=-1,c=0)$ give a formula for ${}^AE_\infty^{s,t}$ in terms of the $B$-sseq.
+\item[(d)] Let $X$ be a spectrum with a $G$-action, taking connective covers we
+  obtain a $G$-action on $\tau_{\geq 0}X$ and a $G$-equivariant map $\tau_{\geq 0}X \to X$.
+  Show that the associated map of $G$-homotopy fixed point sseqs
+  is an instance of slicing.
+\end{itemize}
+
+Now we'll think about the dual situation.
+
+\begin{itemize}
+\item[(e)] Let $(m,c)$ be.
+  Suppose that the map of $E_2$-pages is an isomorphism
+  for $s \leq m(t-s) + c$ and
+  ${}^B E_2^{s,t} = 0$ for $s > m(t-s) + c$.
+  For which $(m,c)$ can the differentials in the $B$-sseq be deduced from the
+  differentials in the $A$-sseq.
+\item[(f)] Under the hypotheses of (d)
+  with $(m=-1,c=0)$ give a formula for ${}^AE_\infty^{s,t}$ in terms of the $B$-sseq.  
+\item[(g)] Let $X_\bullet$ be a spectrum with a skeletal filtration.
+  Let $(X_k)_{\bullet}$ be the $k$-skeleton of $X$ with its restricted skeletal filtation.
+  Show that the map of skeletal sseqs associated to $(X_k)_\bullet \to X_\bullet$
+  is an instance of slicing.      
+\end{itemize}
+  
+Think about some scenarios where a sseq might be sliced multiple times.
+
+
+\section{\bf Exercise 6: A bracket in $\KO$}
+
+In this exercise we will recover an instance of Moss' theorem on
+the interaction between Toda brackets and sseqs.
+
+Prove that in $\pi_*\KO$ we have
+\[ \langle 2, \eta, \eta^2 \rangle = \alpha + 2\blacksquare \]
+where $\alpha$ is a generator of $\pi_4\KO$.
+
+\section{\bf Exercise 7: The Wood cofiber sequence (ver 2)}
+
+$\mathrm{KO}$ is an $\E_\infty$-algebra in $\Sp$ whose associated cohomology theory
+classifies stable vector bundles.
+Complexification gives a map of $\E_\infty$-algebras
+\[ \KO \to \KU. \]
+
+homotopy groups of both
+
+(a) determine what the map does on homotopy.
+
+
+(b) Reduce computing cof eta homotopy to a single bracket.
+
+
+
+(c)
+
+The ring spectrum $\mathrm{KU}$ satisfies the following properties
+
+
+\section{\bf Exercise 8: $X(2)$}
+
+
+
+
+\bibliographystyle{alpha}
+\bibliography{bibliography}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% eval: (visual-line-mode t)
+%%% eval: (auto-fill-mode 0)
+%%% End:

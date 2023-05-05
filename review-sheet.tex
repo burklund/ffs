@@ -1,0 +1,105 @@
+\pdfoutput=1\relax
+\documentclass{amsart}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\input{Preamble.tex}
+\usepackage[margin=1.5in]{geometry}
+
+\newtoggle{draft}
+% NB: toggle this to hide comments
+%\togglefalse{draft}
+\toggletrue{draft}
+
+\iftoggle{draft}{
+%\usepackage{showkeys}
+\newcommand{\atodo}[1]{\todo[color=blue!40]{#1}}
+\newcommand{\ttodo}[1]{\todo[color=green!40]{#1}}
+\newcommand{\tcomment}[1]{\todo[inline,color=green!40]{#1}}
+\newcommand{\NB}[1]{\todo[color=gray!40]{#1}}
+\newcommand{\TODO}[1]{\todo[color=red]{#1}}
+}{ % else
+\newcommand{\NB}[1]{}
+\newcommand{\TODO}[1]{}
+\renewcommand{\todo}[1]{}
+\renewcommand{\todo}[1]{}
+}
+
+\title{Review sheet}
+
+%% \author{Robert Burklund}
+%% \address{Department of Mathematical Sciences, University of Copenhagen, Denmark}
+%% \email{rb@math.ku.dk}
+
+\begin{document}
+\maketitle
+
+The theme of this review sheet is having a general sense of how things work and what operations we can do with them.
+Not everything here will be used in the course and much of it won't be used for a while.
+The purpose is mostly to record some things that are good to know about.
+
+\begin{enumerate}
+\item Category theory
+  \begin{enumerate}
+  \item adjunctions,
+  \item monads and comonads,
+  \item enriched categories.    
+  \end{enumerate}
+\item Behavoir of limits and colimits
+  \begin{enumerate}    
+  \item universal property for mapping in to a product,
+  \item universal property for mapping out of a coproduct,
+  \item universal property for mapping in to a pullback,
+  \item universal property for mapping out of a pushout,
+  \item initial and terminal objects,
+  \item universal property for mapping in to a fiber,
+  \item universal property for mapping out of a cofiber,
+  \item rewriting fibers as cofibers in a stable category
+    (in order to use universal properties in the other direction),
+  \item cofinality,
+  \item filtered diagrams and filtered colimits,
+  \item sifted diagram and sifted colimits,
+  \item rewriting finite colimits in terms of pushouts,
+  \item idempotents and idempotent completion,
+  \item absolute colimits.
+  \end{enumerate}
+\item Finiteness conditions
+  \begin{enumerate}
+  \item finite spaces,
+  \item finite spectra,
+  \item finite categories,
+  \item atomic,
+  \item compact,
+  \item dualizable.
+  \end{enumerate}
+\item Presentability
+  \begin{enumerate}
+  \item HTT Ch 5,
+  \item accessibility,
+  \item ind completion,
+  \item adjoint functor theorems.
+  \end{enumerate}  
+\item Symmetric monoidal categories
+  \begin{enumerate}
+  \item Symmetric monoidal $1$-categories,
+  \item Symmetric monoidal categories,
+  \item Underlying data of sym mon category (binary tensor product, associator),
+  \item Extended powers,
+  \item $\E_1$-algebras and $\E_\infty$-algebras,
+  \item Underlying data from an $\E_\infty$-algebra (mult. map from extended power),
+  \item (left) modules over an $\E_1$-algebra,
+  \item monoidal structure on $\Mod(R)$ when $R$ is an $\E_2$-algebra,
+  \item sym mon structure on $\Mod(R)$ when $R$ is an $\E_\infty$-algebra.
+  \end{enumerate}
+\end{enumerate}
+
+\bibliographystyle{alpha}
+\bibliography{bibliography}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% eval: (visual-line-mode t)
+%%% eval: (auto-fill-mode 0)
+%%% End:

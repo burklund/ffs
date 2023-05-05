@@ -1,0 +1,262 @@
+\pdfoutput=1\relax
+\documentclass[reqno]{amsart}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\input{Preamble.tex}
+\usepackage[margin=1.5in]{geometry}
+
+\newtoggle{draft}
+% NB: toggle this to hide comments
+%\togglefalse{draft}
+\toggletrue{draft}
+
+\iftoggle{draft}{
+%\usepackage{showkeys}
+\newcommand{\atodo}[1]{\todo[color=blue!40]{#1}}
+\newcommand{\ttodo}[1]{\todo[color=green!40]{#1}}
+\newcommand{\tcomment}[1]{\todo[inline,color=green!40]{#1}}
+\newcommand{\NB}[1]{\todo[color=gray!40]{#1}}
+\newcommand{\TODO}[1]{\todo[color=red]{#1}}
+}{ % else
+\newcommand{\NB}[1]{}
+\newcommand{\TODO}[1]{}
+\renewcommand{\todo}[1]{}
+\renewcommand{\todo}[1]{}
+}
+
+\title{Exercise sheet 2}
+
+%% \author{Robert Burklund}
+%% \address{Department of Mathematical Sciences, University of Copenhagen, Denmark}
+%% \email{rb@math.ku.dk}
+
+\begin{document}
+\maketitle
+
+\section*{\bf Exercise 1: Advanced shuffling}
+
+In lecture we discussed the shuffling formulas
+\begin{itemize}
+\item $\langle a,b,cd \rangle \subseteq \langle a,bc,d \rangle$,
+\item $\langle a,b,c \rangle d = -a \langle b,c,d \rangle$ and
+\item $\langle a,b,c \rangle + \langle b,c,a \rangle + \langle c,a,b \rangle = 0$
+\end{itemize}
+and the situations in which they apply.
+In this exercise you will prove two additional shuffling formulas.
+
+Let $\CC$ be a stable category.
+Let
+\[ U \xrightarrow{a} V \xrightarrow{b} W \xrightarrow{c} X \xrightarrow{d} Y \]
+be a sequence of four composable maps in $\CC$ and
+suppose that all $ab$ and $bc$ are nullhomotopic.
+
+\begin{enumerate}
+\item[(a)] Show that
+  \[ \langle a,b,c \rangle d \subseteq \langle a,b,cd \rangle. \]
+\item[(b)] Identify which nullhomotopies one should use to obtain a equality.
+\end{enumerate}
+
+Let
+\[ U \xrightarrow{a} V \xrightarrow{b} W \xrightarrow{c} X \xrightarrow{d} Y \xrightarrow{e} Z \]
+be a sequence of five composable maps in $\CC$ and
+let $e_2 : bc \leftrightarrow 0$ and $e_3 : cd \leftrightarrow 0 $ be nullhomotopies.
+Suppose further that all of the following maps are nullhomotopic
+\[ ab,\quad de,\quad a  \langle b,{}^{e_2} c,{}^{e_3} d \rangle,\quad \langle b,{}^{e_2} c,{}^{e_3} d \rangle e. \]
+
+Consider the following expression:
+\begin{align}
+  \langle \langle a, b, c \rangle, d, e \rangle \pm \langle a, \langle b, c, d \rangle, e \rangle \pm \langle a, b, \langle c, d, e \rangle \rangle
+\end{align}
+
+\begin{enumerate}
+\item[(c)] Confirm that the expression in (1) is defined,
+  adding in the omitted suspensions as necessary.
+\item[(d)] Determine an orientation of the signs so that (1) contains zero.
+\item[(e)] Identify a collection of nullhomotopies so that the expression is exactly zero.
+\end{enumerate}
+
+
+\section*{\bf Background}
+
+The first $13$ stable homotopy groups of the $2$-local sphere $\Ss_{(2)}$ can be computed using only the Serre spectral sequence. 
+These groups (and the ring structure) are given in the table below:
+
+\begin{center}
+  \begin{tabular}{|c|c|c|c|}\hline
+    stem & group & generator & relations \\\hline\hline
+    0 & $\Z$ & $1$ & \\\hline
+    1 & $\Z/2$ & $\eta$ & \\\hline
+    2 & $\Z/2$ & $\eta^2$ & \\\hline
+    3 & $\Z/8$ & $\nu$ & $\eta^3 = 4\nu$ \\\hline
+    4 & $0$ & & \\\hline
+    5 & $0$ & & \\\hline
+    6 & $\Z/2$ & $\nu^2$ & \\\hline
+    7 & $\Z/16$ & $\sigma$ & \\\hline
+    8 & $\Z/2 \oplus \Z/2$ & $\eta\sigma$, $\epsilon$ & \\\hline
+    9 & $\Z/2 \oplus \Z/2 \oplus \Z/2$ & $\eta^2\sigma$, $\eta\epsilon$, $\mu_9$ & $\nu^3 = \eta^2\sigma + \eta\epsilon$ \\\hline
+    10 & $\Z/2$ & $\eta\mu_9$ & \\\hline
+    11 & $\Z/8$ & $\zeta$ & $\eta^2\mu_9 = 4\zeta$ \\\hline
+    12 & $0$ & & \\\hline
+    13 & $0$& & \\\hline
+  \end{tabular}
+\end{center}
+
+You will want to use this information as you do the next four exercises.
+
+%% {\bf Question 2:} Evaluating Toda brackets \hfill
+\section*{\bf Exercise 2: Evaluating Toda brackets}
+
+Toda proved the following formula\footnote{This formula comes from the theory of power operations on $\Ss$ and we will return to this subject at the end of the course.} for Toda brackets of elements in $\pi_*\Ss$:
+Given $\alpha, \beta \in \pi_*\Ss$ such that $\alpha\beta = 0$
+\begin{itemize}
+\item If $|\alpha| = k$ is even (or $k$ is odd and $2\alpha =0$),
+  there is an element $Q_1(\alpha) \in \pi_{2k+1}\Ss$ such that
+  \[ \langle \alpha, \beta, \alpha \rangle = Q_1(\alpha) \beta + \alpha \blacksquare. \]
+  Here $\blacksquare$ is an ideterminate used for keeping track of indeterminacy.
+\item If $|\alpha| = k$ is odd, then   
+  \[ \langle \alpha, \beta, \alpha \rangle \quad\text{ and }\quad \langle \beta, \alpha, 2\alpha \rangle. \]
+  have non-empty intersection.
+\end{itemize}
+For elements in even degree $Q_1(-)$ is a (not necessarily additive) operation of signature
+\[ \pi_k\Ss \to \pi_{2k+1}\Ss. \]
+In fact, for $\alpha_1, \alpha_2 \in \pi_k\Ss$ with $k$ even we have
+\[ Q_1(\alpha_1 + \alpha_2) = Q_1(\alpha_1) + Q_1(\alpha_2) + \eta \alpha_1 \alpha_2 \]
+and for $\alpha_1 \in \pi_{k_1}\Ss$ and $\alpha_2 \in \pi_{k_2}\Ss$ with $k_1,k_2$ even we have
+\[ Q_1(\alpha_1 \alpha_2) = \alpha_1^2 Q_1(\alpha_2) + Q_1(\alpha_1) \alpha_2^2 \]
+
+Using the table above, shuffling rules and Toda's formula evaluate the following Toda brackets.
+Remember to keep indeterminacy in mind.
+
+\begin{enumerate}
+\item[(0)] Compute $Q_1(n)$ for each $n \in \Z \cong \pi_0\Ss$.
+\item[(a)] $\langle 2, \eta, 2 \rangle$
+\item[(b)] $\langle \eta, 2, \eta \rangle$
+\item[(c)] $\langle 2, \eta, \nu \rangle$
+\item[(d)] $\langle \eta, \nu, \eta \rangle$
+\item[(e)] $\langle \nu, \eta, \nu \rangle$
+\item[(f)] $\langle \eta^2, \eta^2, \eta^2 \rangle$
+\item[(g)] $\langle \eta, 2, \nu^2 \rangle$
+\item[(h)] $\langle \mu_9, 2, \eta \rangle$
+\end{enumerate}
+
+\section{\bf Exercise 3: Cells structures}
+
+Like spaces, spectra can be given skeletal filtrations.
+
+\begin{dfn}
+  A skeletal filtration on $X$ is a sequence 
+  \[ \cdots \to X_{-2} \to X_{-1} \to X_0 \to X_1 \to X_2 \to \cdots \]
+  such that
+  \begin{enumerate}
+  \item $\cof(X_{i-1} \to X_i)$ is a sum of copies of $\Ss^i$,
+  \item $0 \cong X_{-\infty} \coloneqq \lim X_i$ and
+  \item $X \cong X_\infty \coloneqq \colim X_i$.
+  \end{enumerate}
+\end{dfn}
+
+Alternatively, we can rotate the cofiber sequences in a skeletal filtration and view
+the pushout
+\[ \begin{tikzcd}
+  \oplus \Ss^{i-1} \ar[r] \ar[d] & X_{i-1} \ar[d] \\
+  0 \ar[r] & X_{i}
+\end{tikzcd} \]
+as specifying a collection of cell attachments that build $X_i$ from $X_{i-1}$.\footnote{Recall that discs are contractible, which is why the bottom left is zero.}
+
+
+\begin{enumerate}
+\item[(a)] Prove that every $2$-local finite spectrum $X$ can be given a skeletal filtration with exactly $\mathrm{dim}_{\F_2}(H_i(X;\F_2))$ many $i$-cells. We call a choice of such a skeletal filtration a minimal skeletal filtration. (Hint: use the Hurewicz theorem)
+\item[(b)] Extend the results of part (a) to spectra which are of finite type.\footnote{$X$ is of finite type if it is bounded below and $H_i(X;\Z_{(2)})$ is finitely generated for all $i$.}
+\end{enumerate}
+
+The homotopy and homology rings of the spectrum $\F_2$ representing cohomology with $\F_2$ coefficients are given by
+\[ \pi_*\F_2 \cong \begin{cases} \F_2 & *=0 \\ 0 & *\neq 0 \end{cases} \qquad\qquad H_*(\F_2; \F_2) \coloneqq \pi_*(\F_2 \otimes \F_2) \cong \F_2[\zeta_1, \zeta_2, \dots] \]
+where $|\zeta_i| = 2^{i} - 1$.
+
+\begin{enumerate}
+\item[(c)] Determine the attaching maps in the minimal $0$-skeleton of $\F_2$.
+\item[(d)] Determine the attaching maps in the minimal $1$-skeleton of $\F_2$.
+\item[(e)] Determine the attaching maps in the minimal $2$-skeleton of $\F_2$.
+\item[(f)] Determine the attaching maps in the minimal $3$-skeleton of $\F_2$.
+\end{enumerate}
+
+The homotopy and homology rings of the spectrum $\Z_{(2)}$ representing cohomology with $\Z_{(2)}$ coefficients are given by
+\[ \pi_*\F_2 \cong \begin{cases} \Z_{(2)} & *=0 \\ 0 & *\neq 0 \end{cases} \qquad\qquad H_*(\Z_{(2)}; \F_2) \coloneqq \pi_*(\Z_{(2)} \otimes \F_2) \cong \F_2[\zeta_1^2, \zeta_2, \dots] \]
+where $|\zeta_1^2| = 2$ and $|\zeta_i| = 2^{i} - 1$ for $i \geq 2$.
+The name of the class $\zeta_1^2$ comes from the fact that the reduction mod $2$ map
+\[ \Z_{(2)} \to \F_2 \]
+induces the natural injective map of polynomial algebras
+\[ \F_2[\zeta_1^2, \zeta_2, \dots] \to \F_2[\zeta_1, \zeta_2, \dots] \]
+on $\F_2$-homology.
+
+\begin{enumerate}
+\item[(g)] Determine the attaching maps in the minimal $2$-skeleton of $\Z_{(2)}$.
+\item[(h)] Determine the attaching maps in the minimal $3$-skeleton of $\Z_{(2)}$.
+\end{enumerate}
+
+
+\section{\bf Exercise 4: Characterizing $\mathrm{KU}$}
+
+$\mathrm{KU}$ is an $\E_\infty$-algebra in $\Sp$ whose associated cohomology theory
+classifies stable complex vector bundles.
+The ring spectrum $\mathrm{KU}_{(2)}$ satisfies the following properties
+
+\begin{enumerate}
+\item $\KU_{(2)}$ is $2$-periodic.
+  This means that there is an invertible class $\beta$ in $\pi_2\KU_{(2)}$.
+\item The connective cover of $\KU_{(2)}$ is typically called $\ku_{(2)}$.
+  The $\E_\infty$-algebra $\ku_{(2)}$ is finite type and 
+  its $\F_2$-homology is
+  \[ H_*(\ku_{(2)}; \F_2) \coloneqq \pi_*(\F_2 \otimes \ku_{(2)}) \cong \F_2[\zeta_1^{2}, \zeta_2^{2}, \zeta_3, \zeta_4, \dots ] \]
+  where
+  $|\zeta_1^{2}| = 2$,
+  $|\zeta_2^{2}| = 6$
+  and $|\zeta_i| = 2^{i} - 1$ for $i \geq 3$.
+\item There is a map of $\E_\infty$-algebras $\ku_{(2)} \to \Z_{(2)}$ which induces the natural inclusion
+  \[ \F_2[\zeta_1^{2}, \zeta_2^{2}, \zeta_3, \zeta_4, \dots ] \to \F_2[\zeta_1^2, \zeta_2, \dots] \]
+  on $\F_2$-homology.
+\end{enumerate}
+
+
+\begin{enumerate}
+\item[(a)] Show that the localization of $\ku_{(2)}$ at $\beta$ is $\KU_{(2)}$.
+\item[(b)] Determine the cells and attaching maps of a minimal 4 skeleton of $\ku_{(2)}$.
+\item[(c)] Using (b), compute $\pi_*\ku_{(2)}$ for $*=0,1,2$.
+\item[(d)] Determine the ring $\pi_*\KU_{(2)}$.
+\item[(e)] Describe $\beta$ as a map into the $2$-skeleton of $\ku_{(2)}$.
+\item[(f)] Conclude that properties (1), (2) and (3) above characterize $\KU_{(2)}$.
+\item[(g)] How much can you weaken properties (1), (2) and (3) while still being able to prove (f)?
+\end{enumerate}
+
+
+%% \section{\bf Exercise 5: The Wood cofiber sequence}
+
+%% $\mathrm{KO}$ is an $\E_\infty$-algebra in $\Sp$ whose associated cohomology theory
+%% classifies stable vector bundles.
+%% Complexification gives a map of $\E_\infty$-algebras
+%% \[ \KO \to \KU. \]
+
+%% homotopy groups of both
+
+%% (a) determine what the map does on homotopy.
+
+
+%% (b) Reduce computing cof eta homotopy to a single bracket.
+
+
+
+%% (c)
+
+%% The ring spectrum $\mathrm{KU}$ satisfies the following properties
+
+
+\bibliographystyle{alpha}
+\bibliography{bibliography}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% eval: (visual-line-mode t)
+%%% eval: (auto-fill-mode 0)
+%%% End:

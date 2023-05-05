@@ -1,0 +1,94 @@
+\pdfoutput=1\relax
+\documentclass{amsart}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\input{Preamble.tex}
+\usepackage[margin=1.5in]{geometry}
+
+\newtoggle{draft}
+% NB: toggle this to hide comments
+%\togglefalse{draft}
+\toggletrue{draft}
+
+\iftoggle{draft}{
+%\usepackage{showkeys}
+\newcommand{\atodo}[1]{\todo[color=blue!40]{#1}}
+\newcommand{\ttodo}[1]{\todo[color=green!40]{#1}}
+\newcommand{\tcomment}[1]{\todo[inline,color=green!40]{#1}}
+\newcommand{\NB}[1]{\todo[color=gray!40]{#1}}
+\newcommand{\TODO}[1]{\todo[color=red]{#1}}
+}{ % else
+\newcommand{\NB}[1]{}
+\newcommand{\TODO}[1]{}
+\renewcommand{\todo}[1]{}
+\renewcommand{\todo}[1]{}
+}
+
+\title{Fun with finite spectra}
+
+\author{Robert Burklund}
+\address{Department of Mathematical Sciences, University of Copenhagen, Denmark}
+\email{rb@math.ku.dk}
+
+\begin{document}
+\maketitle
+
+{\bf Time and place:}\\
+Mon, 14-16: 4-0-05, Biocenter (lecture) \\
+Wed, 10-12: A105, HCØ (exercise session) \\
+Wed, 14-16: Lille UP1, DIKU (lecture) \\
+\hfill \\
+
+{\bf Goal:}\\
+By the end of the course participants will know enough methods and techniques to compute the first 32 stable stems.
+\hfill \\
+
+{\bf Topics:}\\
+Brown's finiteness theorem, stable categories, triangulated categories, derivators, $t$-structures, weight structures, Toda brackets, filtered spectra, spectral sequences, cellular filtrations and the Atiyah--Hirzebruch sseq, cohomology operations, Adams sseq, comodules and ext groups, stacks, May sseq, synthetic spectra, power operations.
+\hfill \\
+
+{\bf Outline:}\\
+
+\begin{tabular}{|c|c|c|c|}\hline
+  & Date & Topic & References \\\hline\hline
+  Lec 1 & 24/4 & Brown's finiteness theorem,  & [Brown],  \\
+  & & stable categories & [HA Ch 1.1] \\\hline
+  Ex 1 & 26/4 & review and background & [HTT], [HA] \\\hline
+  Lec 2 & 26/4 & triangulated cateogries, & [HA Ch 1.1], \\
+  & & Toda brackets & [Toda] \\\hline
+  Lec 3 & 1/5 & $t$-structures, & [HA Ch 1.2] \\
+  & & spectral sequences & \\\hline
+  Ex 2 & 3/5 & Toda brackets, cell structures & \\\hline
+  Lec 4 & 3/5 & Computing $\pi_*\Ss$ (AH sseq), &  \\
+  & & cell diagrams & \\\hline
+  Lec 5 & 8/5 & filtered spectra, & \\
+  & & examples of sseqs & \\\hline
+  Ex 3 & 10/5 & & \\\hline
+  Lec 6 & 10/5 & synthetic spectra & \\\hline
+\end{tabular}
+
+\begin{tabular}{|c|c|c|c|}\hline
+  Lec 7 & 15/5 & cohomology operations, comodules & \\\hline
+  Ex 4 & 17/5 & & \\\hline
+  Lec 8 & 17/5 & & \\\hline
+  Lec 9 & 22/5 & computing ext groups, stacks & \\\hline
+  Ex 5 & 24/5 & & \\\hline
+  Lec 10 & 24/5 & May sseq & [MilnorMoore] \\\hline
+  Lec 11 & 29/5 & Computations & \\\hline
+  Ex 6 & 31/5 & & \\\hline
+  Lec 12 & 31/5 & Computations & \\\hline
+\end{tabular}
+
+
+
+\bibliographystyle{alpha}
+\bibliography{bibliography}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% eval: (visual-line-mode t)
+%%% eval: (auto-fill-mode 0)
+%%% End:

@@ -1,0 +1,393 @@
+\pdfoutput=1\relax
+\documentclass[reqno]{amsart}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\input{Preamble.tex}
+\usepackage[margin=1.5in]{geometry}
+
+\newtoggle{draft}
+% NB: toggle this to hide comments
+%\togglefalse{draft}
+\toggletrue{draft}
+
+\iftoggle{draft}{
+%\usepackage{showkeys}
+\newcommand{\atodo}[1]{\todo[color=blue!40]{#1}}
+\newcommand{\ttodo}[1]{\todo[color=green!40]{#1}}
+\newcommand{\tcomment}[1]{\todo[inline,color=green!40]{#1}}
+\newcommand{\NB}[1]{\todo[color=gray!40]{#1}}
+\newcommand{\TODO}[1]{\todo[color=red]{#1}}
+}{ % else
+\newcommand{\NB}[1]{}
+\newcommand{\TODO}[1]{}
+\renewcommand{\todo}[1]{}
+\renewcommand{\todo}[1]{}
+}
+
+\title{Exercise sheet 3}
+
+%% \author{Robert Burklund}
+%% \address{Department of Mathematical Sciences, University of Copenhagen, Denmark}
+%% \email{rb@math.ku.dk}
+
+\begin{document}
+\maketitle
+
+
+\section*{\bf Background}
+
+The first $13$ stable homotopy groups of the $2$-local sphere $\Ss_{(2)}$ can be computed using only the Serre spectral sequence. 
+These groups (and the ring structure) are given in the table below:
+
+\begin{center}
+  \begin{tabular}{|c|c|c|c|}\hline
+    stem & group & generator & relations \\\hline\hline
+    0 & $\Z$ & $1$ & \\\hline
+    1 & $\Z/2$ & $\eta$ & \\\hline
+    2 & $\Z/2$ & $\eta^2$ & \\\hline
+    3 & $\Z/8$ & $\nu$ & $\eta^3 = 4\nu$ \\\hline
+    4 & $0$ & & \\\hline
+    5 & $0$ & & \\\hline
+    6 & $\Z/2$ & $\nu^2$ & \\\hline
+    7 & $\Z/16$ & $\sigma$ & \\\hline
+    8 & $\Z/2 \oplus \Z/2$ & $\eta\sigma$, $\epsilon$ & \\\hline
+    9 & $\Z/2 \oplus \Z/2 \oplus \Z/2$ & $\eta^2\sigma$, $\eta\epsilon$, $\mu_9$ & $\nu^3 = \eta^2\sigma + \eta\epsilon$ \\\hline
+    10 & $\Z/2$ & $\eta\mu_9$ & \\\hline
+    11 & $\Z/8$ & $\zeta$ & $\eta^2\mu_9 = 4\zeta$ \\\hline
+    12 & $0$ & & \\\hline
+    13 & $0$& & \\\hline
+  \end{tabular}
+\end{center}
+
+
+\section{\bf Exercise 1: Constructing finite spectra}
+
+In this exercise we will focus on constructing finite spectra.
+We begin with the general theory.
+
+\begin{itemize}
+\item[(a)] Given a map $\alpha : \Ss^k \to \Ss^0$
+  when can we construct a finite spectrum
+  with a cell structure as depicted below?
+  \[ \begin{tikzcd}[cells={nodes={draw=gray}}]
+    {k} \ar[d, "\alpha", no head] \\ {0}
+  \end{tikzcd} \]
+\item[(b)] Given a pair of classes $\alpha \in \pi_k\Ss$ and $\beta \in \pi_m\Ss$
+  when can we construct a finite spectrum
+  with a cell structure as depicted below?
+  \[ \begin{tikzcd}[cells={nodes={draw=gray}}]    
+    {k+m} \ar[d, "\beta", no head] \\ {k} \ar[d, "\alpha", no head] \\ {0}
+  \end{tikzcd} \]
+\item[(c)] Given a pair of classes $\alpha \in \pi_k\Ss$ and $\beta \in \pi_m\Ss$
+  when can we construct a finite spectrum
+  with a cell structure as depicted below?
+  \[ \begin{tikzcd}[cells={nodes={draw=gray}}]    
+    {k} \ar[d, "\alpha", no head] & {m} \ar[dl, "\beta", no head] \\ {0}
+  \end{tikzcd} \]
+\item[(d)] Given three classes $\alpha \in \pi_k\Ss$, $\beta \in \pi_m\Ss$ and $\gamma \in \pi_{n}\Ss$ 
+  when can we construct a finite spectrum
+  with a cell structure as depicted below?
+  \[ \begin{tikzcd}[cells={nodes={draw=gray}}]
+    & {m+n} \ar[dl, dashed, "?", no head] \ar[d, "\gamma", no head] \\
+    {k} \ar[d, "\alpha", no head] & {m} \ar[dl, "\beta", no head] \\ {0}
+  \end{tikzcd} \]
+  What requirements are there on the dashed attaching map?
+\item[(e)] Given three classes $\alpha \in \pi_k\Ss$, $\beta \in \pi_m\Ss$ and $\gamma \in \pi_{n}\Ss$ 
+  when can we construct a finite spectrum
+  with a cell structure as depicted below?
+  \[ \begin{tikzcd}[cells={nodes={draw=gray}}]        
+    {k+m+n} \ar[d, "\gamma", no head] \\ {k+m} \ar[d, "\beta", no head] \\ {k} \ar[d, "\alpha", no head] \\ {0}
+  \end{tikzcd} \]
+\end{itemize}
+
+For the remaining parts of this question determine whether finite spectra with the cell structures depicted below exist.
+
+\begin{center}
+  \begin{tikzcd}[cells={nodes={draw=gray}}]
+    {2} \ar[d, dash, "2"] \\
+    {1} \ar[d, dash, "2"] \\
+    {0} \\
+    {(f)} 
+  \end{tikzcd}
+  \quad
+  \begin{tikzcd}[cells={nodes={draw=gray}}]
+    {1} \ar[d, dash, "2"] \\
+    {0} \\
+    {(g)}
+  \end{tikzcd}
+  \quad
+  \begin{tikzcd}[cells={nodes={draw=gray}}]
+    {3} \ar[d, dash, "\eta"] \\
+    {1} \ar[d, dash, "2"] \\
+    {0} \\
+    {(h)} 
+  \end{tikzcd}
+  \quad
+  \begin{tikzcd}[cells={nodes={draw=gray}}]
+    {5} \ar[d, dash, "\eta"] \\
+    {3} \ar[d, dash, "\eta^2"] \\
+    {0} \\
+    {(i)} 
+  \end{tikzcd}
+  \quad
+  \begin{tikzcd}[cells={nodes={draw=gray}}]
+    {6} \ar[d, dash, "\eta"] \\
+    {4} \ar[d, dash, "\nu"] \\
+    {0} \\
+    {(j)} 
+  \end{tikzcd}
+  \quad
+  \begin{tikzcd}[cells={nodes={draw=gray}}]
+    {7} \ar[d, dash, "\nu"] \\
+    {3} \ar[d, dash, "\eta"] \\
+    {1} \ar[d, dash, "2"] \\
+    {0} \\
+    {(k)} 
+  \end{tikzcd}
+  \quad
+  \begin{tikzcd}[cells={nodes={draw=gray}}]
+    & {11} \ar[d, dash, "\nu^2"] \ar[dl, dash, "\epsilon"] \\
+    {2} \ar[d, dash, "\eta"] & {4} \ar[dl, dash, "\nu"] \\
+    {0} & \\
+    {(l)} 
+  \end{tikzcd}
+  \quad
+  \begin{tikzcd}[cells={nodes={draw=gray}}]
+    {12} \ar[d, dash, "2"] \\
+    {10} \ar[dd, dash, bend left, "\mu_9"] \\ \\
+    {0} \\
+    {(m)} 
+  \end{tikzcd}
+\end{center}
+
+\begin{center} \begin{tikzcd}[cells={nodes={draw=gray}}]
+    & & & &
+    {5} \ar[dddd, dash, bend left, "\nu"] &
+    {5} \ar[dddd, dash, bend left, "\nu"] \ar[dd, dash, "\eta"] &
+    {5} \ar[dddd, dash, bend left, "\nu"] \ar[dd, dash, bend right, "\eta"] \\
+    & & & {8} \ar[ddd, dash, bend left, "\nu^2"] & & & &
+    {4} \ar[d, dash, "2"'] \ar[dd, dash, bend left, "\eta"]\\
+    & &
+    {14} \ar[d, dash, bend left, "\sigma"] & & &
+    {3} \ar[ddd, dash, bend right, "\eta^2"] &
+    {3} \ar[d, dash, "2"] &
+    {3} \ar[dd, dash, bend right, "\eta"'] \\
+    {6} \ar[d, dash, bend left, "\nu"] &
+    {12} \ar[d, dash, bend left, "\sigma"] &
+    {6} \ar[d, dash, bend left, "\nu"] & & & &
+    {2} \ar[dd, dash, bend right, "\eta"'] &
+    {2} \ar[dd, dash, bend left, "\eta"] \\
+    {2} \ar[d, dash, "\eta"] &
+    {4} \ar[d, dash, "\nu"] &
+    {2} \ar[d, dash, "\eta"] &
+    {1} \ar[d, dash, "2"] &
+    {1} \ar[d, dash, "8"] &
+    {1} \ar[d, dash, "4"] &
+    {1} \ar[d, dash, "2"] &
+    {1} \ar[d, dash, "2"'] \\
+    {0} & {0} & {0} & {0} & {0} & {0} & {0} & {0} \\
+    (n) & (o) & (p) & (q) & (r) & (s) & (t) & (u)
+\end{tikzcd} \end{center}
+
+\begin{center}
+\begin{tikzcd}[cells={nodes={draw=gray}}]
+  & {10} \ar[dl, dash, "\nu"] \ar[dr, dash, "\eta"]  & \\
+  {6} \ar[d, dash, "\eta^2"] & & {8} \ar[d, dash, "\nu^2"] \\
+  {4} \ar[dr, dash, "\nu"] & & {2} \ar[dl, dash, "\eta"] \\
+  & {0} & \\
+  & (v) & 
+\end{tikzcd}
+\quad
+\begin{tikzcd}[cells={nodes={draw=gray}}]
+    {8} \ar[d, dash, "\eta"] \\
+    {6} \ar[d, dash, "\nu"] \\
+    {2} \ar[d, dash, "\eta"] \\
+    {0} \\
+    {(w)} 
+\end{tikzcd}
+\quad
+\begin{tikzcd}[cells={nodes={draw=gray}}]
+  & {11} \ar[dl, dash, "\nu"] \ar[d, dash, "\eta^2"] \ar[dr, "\eta"] & \\
+  {7} \ar[dr, dash, "\nu^2"] &
+  {8} \ar[d, dash, "\sigma"] &
+  {9} \ar[dl, dash, "\epsilon"] \\  
+  & {0} & \\
+  & {(x)}
+\end{tikzcd}
+\quad
+\begin{tikzcd}[cells={nodes={draw=gray}}]
+  & {6} \ar[d, dash, "2"] \ar[ddl, dash, "\eta"] \\
+  & {5} \ar[dd, dash, "\eta", bend left] \ar[ddddl, dash, "\nu"] \\
+  {4} \ar[d, dash, "2"] \ar[ddr, dash, "\eta"'] & \\
+  {3} \ar[dd, dash, "\eta", bend right] & {3} \ar[d, dash, "2"] \\
+  & {2} \ar[ddl, dash, "\eta"] \\
+  {1} \ar[d, dash, "2"] & \\
+  {0} \\
+  {(y)}
+\end{tikzcd}
+\end{center}
+
+\begin{center}
+\begin{tikzcd}[cells={nodes={draw=gray}}]
+  {8} \ar[d, dash, "2"] \ar[dd, bend left, dash, "\eta"] \ar[dddd, dash, bend right, "\nu"] \\
+  {7} \\
+  {6} \ar[d, dash, "2"] \\
+  {5} \ar[dd, dash, bend left, "\eta"] \\
+  {4} \ar[dd, dash, bend right, "\eta"'] \ar[d, dash, "2"] \\
+  {3} \\
+  {2} \ar[d, dash, "2"] \\
+  {1} \\
+  {(z)}
+\end{tikzcd}
+\quad
+\begin{tikzcd}[cells={nodes={draw=gray}}]
+  & {10} \ar[dddr, dash, "\eta^2"] \ar[ddl, dash, "\eta"] \\ \\
+  {8} \arrow[dash, "\sigma", bend right=10]{11-1} \\
+  & & {7} \ar[dl, dash, "2"] \\
+  & {6} \ar[ddl, dash, "\eta"] \\ \\
+  {4} \ar[dddd, dash, "\nu"] \\ \\ \\ \\
+  {0} & {(\text{\ae})} \\
+\end{tikzcd}
+\quad
+\begin{tikzcd}[cells={nodes={draw=gray}}]
+  {8} \arrow[dash, "\sigma", bend right]{9-1} & {8} \ar[dd, dash, "\eta"] \ar[ddl, dash, "\eta"]\\
+  & & {7} \ar[dl, dash, "2"] \\
+  {6} \ar[dd, dash, "\eta"] \ar[dddd, bend right, "\nu", dash] & {6} \ar[ddl, dash, "\eta"] \\ \\
+  {4} \ar[dddd, dash, "\nu", bend right] \\ \\
+  {2} \ar[dd, dash, "\eta"] \\ \\
+  {0} & {(\text{\o})}    
+\end{tikzcd}
+\quad
+\begin{tikzcd}[cells={nodes={draw=gray}}]
+  {8} \arrow[dash, "\sigma", bend right]{9-1} & & {8} \ar[dd, dash, "\eta"] \ar[ddll, dash, "\eta"', bend right] \\
+  & {7} \ar[dddd, dash, "\nu", bend right] \ar[dl, dash, "2"] & & {7} \ar[dl, dash, "2"] \\
+  {6} \ar[dd, dash, "\eta"] \ar[dddd, bend right, "\nu", dash] & & {6} \ar[ddll, dash, "\eta"', bend right]  \\
+  & {5} \ar[dl, dash, "2"] \ar[dd, dash, "\eta"] \\
+  {4} \ar[dddd, dash, "\nu", bend right] \\
+  & {3} \ar[dl, dash, "2"] \\
+  {2} \ar[dd, dash, "\eta"] \\ \\
+  {0}   & {(\text{\aa})} 
+\end{tikzcd}
+\end{center}
+
+Hint: part (\ae)  should be more difficult. Cross-reference this with Ex 3.b.
+
+\section{\bf Exercise 2: Homotopy groups of finite spectra}
+
+\begin{itemize}
+\item[(a)] Determine $\pi_*X$ for $* \leq 10$ where $X$ is the spectrum depicted below.
+  \[ \begin{tikzcd}[cells={nodes={draw=gray}}]
+    {1} \ar[d, dash, "2"] \\
+    {0}
+  \end{tikzcd} \]
+\item[(b)] Determine $\pi_*X$ for $* \leq 10$ where $X$ is the spectrum depicted below.\\
+  \[ \begin{tikzcd}[cells={nodes={draw=gray}}]
+    {2} \ar[d, dash, "\eta"] \\
+    {0}
+  \end{tikzcd} \]
+\item[(c)] Determine $\pi_*X$ for $* \leq 10$ where $X$ is the spectrum depicted below.
+  \[ \begin{tikzcd}[cells={nodes={draw=gray}}]
+    {4} \ar[d, dash, "\nu"] \\
+    {0}
+  \end{tikzcd} \]
+\item[(d)] Determine $\pi_*X$ for $* \leq 8$ where $X$ is the spectrum depicted below.
+  \[ \begin{tikzcd}[cells={nodes={draw=gray}}]
+    {3} \ar[d, dash, "2"] \\
+    {2} \ar[d, dash, "\eta"] \\
+    {0}
+  \end{tikzcd} \]
+\item[(e)] Determine $\pi_*X$ for $* \leq 7$ where $X$ is the spectrum from Ex. 1.\ae.
+\item[(f)] Determine $\pi_*X$ for $* \leq 7$ where $X$ is the spectrum from Ex. 1.\aa.
+\end{itemize}
+
+
+\section{\bf Exercise 3: The homotopy of $\mathrm{KO}$ (cellular approach)}
+
+$\mathrm{KO}$ is an $\E_\infty$-algebra in $\Sp$ whose associated cohomology theory
+classifies stable vector bundles.
+The ring spectrum $\mathrm{KO}_{(2)}$ satisfies the following properties:
+
+\begin{enumerate}
+\item $\KO_{(2)}$ is $8$-periodic.
+  This means that there is an invertible class $\beta$ in $\pi_8\KU_{(2)}$.
+\item The connective cover of $\KO_{(2)}$ is typically called $\ko_{(2)}$.
+  The $\E_\infty$-algebra $\ko_{(2)}$ is finite type and 
+  its $\F_2$-homology is
+  \[ H_*(\ku_{(2)}; \F_2) \coloneqq \pi_*(\F_2 \otimes \ku_{(2)}) \cong \F_2[\zeta_1^{4}, \zeta_2^{2}, \zeta_3, \zeta_4, \dots ] \]
+  where
+  $|\zeta_1^{4}| = 4$,
+  $|\zeta_2^{2}| = 6$
+  and $|\zeta_i| = 2^{i} - 1$ for $i \geq 3$.
+\item There are maps of $\E_\infty$-algebras
+  $\ko_{(2)} \to \ku_{(2)} \to \Z_{(2)}$ which induces the natural inclusions
+  \[ \F_2[\zeta_1^{4}, \zeta_2^{2}, \zeta_3, \zeta_4, \dots ] \to \F_2[\zeta_1^{2}, \zeta_2^{2}, \zeta_3, \zeta_4, \dots ] \to \F_2[\zeta_1^2, \zeta_2, \dots] \]
+  on $\F_2$-homology.
+\end{enumerate}
+
+Using properties (1), (2) and (3) you will now calculate the homotopy groups of $\ko_{(2)}$.
+
+\begin{enumerate}
+\item[(a)] Show that the localization of $\ko_{(2)}$ at $\beta$ is $\KO_{(2)}$.
+\item[(b)] Determine the cells and attaching maps of a minimal $8$-skeleton of $\ko_{(2)}$.
+\item[(c)] Compute $\pi_*\ko_{(2)}$ for $* \leq 7$.
+\item[(d)] Determine the ring $\pi_*\KO_{(2)}$.
+\item[(e)] Let $\alpha$ be a generator of $\pi_4\ko_{(2)}$.
+  Describe $\alpha$ as a map into the $8$-skeleton of $\ko_{(2)}$.
+\item[(f)] Describe $\beta$ as a map into the $8$-skeleton of $\ko_{(2)}$.
+\end{enumerate}
+
+Hint: For part (b) you will want to start by thinking about a minimal $8$-skeleton of $\Z_{(2)}$ and the map $\ko_{(2)} \to \Z_{(2)}$.
+
+\section{\bf Exercise 4: The Wood cofiber sequence}
+
+$\mathrm{KO}$ is an $\E_\infty$-algebra in $\Sp$ whose associated cohomology theory
+classifies stable vector bundles.
+Complexification gives a map of $\E_\infty$-algebras
+\[ \KO \to \KU. \]
+
+\begin{itemize}
+\item[(a)] Prove that $\ko_{(2)} \otimes \mathrm{Cof}(\eta) \cong \ku_{(2)}$.
+\end{itemize}
+
+
+%% \section{\bf Exercise 6: A bracket in $\KO$}
+
+%% In this exercise we will recover an instance of Moss' theorem on
+%% the interaction between Toda brackets and sseqs.
+
+%% Prove that in $\pi_*\KO$ we have
+%% \[ \langle 2, \eta, \eta^2 \rangle = \alpha + 2\blacksquare \]
+%% where $\alpha$ is a generator of $\pi_4\KO$.
+
+%% \section{\bf Exercise 7: The Wood cofiber sequence}
+
+%% $\mathrm{KO}$ is an $\E_\infty$-algebra in $\Sp$ whose associated cohomology theory
+%% classifies stable vector bundles.
+%% Complexification gives a map of $\E_\infty$-algebras
+%% \[ \KO \to \KU. \]
+
+%% homotopy groups of both
+
+%% (a) determine what the map does on homotopy.
+
+
+%% (b) Reduce computing cof eta homotopy to a single bracket.
+
+
+
+%% (c)
+
+%% The ring spectrum $\mathrm{KU}$ satisfies the following properties
+
+
+\bibliographystyle{alpha}
+\bibliography{bibliography}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% eval: (visual-line-mode t)
+%%% eval: (auto-fill-mode 0)
+%%% End:
