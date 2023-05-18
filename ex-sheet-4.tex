@@ -25,7 +25,7 @@
 \renewcommand{\todo}[1]{}
 }
 
-\title{Exercise sheet 3}
+\title{Exercise sheet 4}
 
 %% \author{Robert Burklund}
 %% \address{Department of Mathematical Sciences, University of Copenhagen, Denmark}
@@ -37,13 +37,13 @@
 
 \section*{\bf Background}
 
-The first $13$ stable homotopy groups of the $2$-local sphere $\Ss_{(2)}$ can be computed using only the Serre spectral sequence. 
+The first $13$ stable homotopy groups of the $2$-complete sphere $\Ss_{2}$ can be computed using only the Serre spectral sequence. 
 These groups (and the ring structure) are given in the table below:
 
 \begin{center}
   \begin{tabular}{|c|c|c|c|}\hline
     stem & group & generator & relations \\\hline\hline
-    0 & $\Z$ & $1$ & \\\hline
+    0 & $\Z_2$ & $1$ & \\\hline
     1 & $\Z/2$ & $\eta$ & \\\hline
     2 & $\Z/2$ & $\eta^2$ & \\\hline
     3 & $\Z/8$ & $\nu$ & $\eta^3 = 4\nu$ \\\hline
@@ -71,12 +71,11 @@ Complexification of vector bundles induces a map of $\E_{\infty}$-algebras
 $\KO \to \KU,$
 furthermore complex conjugation provides a $C_2$-action on $\KU$ such that
 $\KO \cong \KU^{hC_2}$.
-
 The $C_2$ action on $\KU$ by complex conjugation
 sends the generator $\beta$ in $\pi_2\KU$ to $-\beta$.
 
 \begin{itemize}
-\item[(0 (bonus))] Using your understanding of complex vector bundles prove that
+\item[(bonus)] Using your understanding of complex vector bundles prove that
   complex conjugatin acts by $-1$ on $\pi_2\KU$.
 \item[(a)] Determine the $E_2$-page of the $C_2$-homotopy fixed point sseq which has signature
   \[ E_2^{s,t} \Rightarrow \pi_{t-s}(\KU^{hC_2}). \]
@@ -94,14 +93,14 @@ With this information in hand we will now investigate the $C_2$-homotopy fixed p
   $(\tau_{\geq \bullet} \KU)^{hC_2}$ underlying the $C_2$-hfp sseq.
 \end{itemize}
 
-\section{\bf Exercise 5: Slicing sseqs}
+\section{\bf Exercise 2: Slicing sseqs}
 
 \begin{itemize}
 \item[(a)] Determine the homotopy groups of $\ku^{hC_2}$ where the action is by complex conjugation (recall that $\ku$ is the connective cover of $\KU$). Observe that $\ku^{hC_2}$ is not $\ko$.
 \end{itemize}
 
 In the remainder of this exercise we will explore the idea of ``slicing'' spectral sequences.
-Let $\left( {}^aE_r^{s,t}, d_r \right)$ and $\left( {}^bE_r^{s,t}, d_r \right)$
+Let $\left( {}^AE_r^{s,t}, d_r \right)$ and $\left( {}^BE_r^{s,t}, d_r \right)$
 be a pair of sseqs and suppose we have a  map
 \[ \left( {}^AE_r^{s,t}, d_r \right) \to \left( {}^BE_r^{s,t}, d_r \right) \]
 between them.
@@ -140,38 +139,105 @@ Now we'll think about the dual situation.
   
 Think about some scenarios where a sseq might be sliced multiple times.
 
+\section{\bf Exercise 3: Bockstein sseqs}
 
-\section{\bf Exercise 6: A bracket in $\KO$}
+%% special properties of bockstein sseqs
+A bockstein sseq is a sseq whose $E_2$-page is of the form
+$E_2^{s,t} \cong E_2^{0,t} \otimes \Z[b]$
+where the $s$-degree of $b$ is positive
+and the diferentials are all $b$-linear.
 
-In this exercise we will recover an instance of Moss' theorem on
+In this exercise you will investigate the special features of bockstein sseqs.
+
+\begin{itemize}
+\item[(a)] Show that a bockstein sseq is uniquely determine by the differentials off the zero line (i.e. $s$-degree 0).
+\item[(b)] Show that $b$ can be formally inverted on the $E_2$-page and that there is a correspond localized bockstein sseq.
+\item[(c)] Show that the localized bockstein sseq uniquely determines the bockstein sseq.
+\item[(d)] Using (c) show that it is possible to set $b=1$ in the localized bockstein sseq and to obtain singly-graded sseq (only the $t$-degree will remain) which continues to contain the full information of the bockstein sseq.
+\end{itemize}
+
+It is useful to compare part (d) with the discussion of the $\tau$-bockstein sseq on a filtered spectrum $X_\bullet$ from class.
+
+\section{\bf Exercise 4: Synthetic stems}
+
+In class we determined the first 13 synthetic stems.
+These groups are given in the table below:
+
+%% The first $13$ stable homotopy groups of the $2$-complete sphere $\Ss_{2}$ can be computed using only the Serre spectral sequence. 
+
+Let $\pi_{0*}$ denote the graded ring
+\[ \pi_{0*} \coloneqq \Z_2[\wt{2}, \tau]/ \wt{2}\tau = 2. \]
+where $|\tau| = (0,-1)$ and $|\wt{2}| = (1,0)$.
+
+\begin{center}
+  \begin{tabular}{|c|c|c|c|}\hline
+    stem & group & generator & degrees \\\hline\hline
+    0 & $\pi_{0*}$ & $1$ & \\\hline
+    1 & $\pi_{0*}/\wt{2}$ & $\eta$ & $|\eta| = (1,1)$ \\\hline
+    2 & $\pi_{0*}/\wt{2}$ & $\eta^2$ & $|\eta^2| = (2,2)$ \\\hline
+    3 & $\pi_{0*}/\wt{2}^3$ & $\nu$ & $|\nu| = (3,1)$ \\\hline
+    4 & $0$ & & \\\hline
+    5 & $0$ & & \\\hline
+    6 & $\pi_{0*}/\wt{2}$ & $\nu^2$ & $|\nu^2| = (6,2)$ \\\hline
+    7 & $\pi_{0*}/\wt{2}^4$ & $\sigma$ & $|\sigma| = (7,1)$ \\\hline
+    8 & $\pi_{0*}/\wt{2} \oplus \pi_{0*}/\wt{2}$ & $\eta\sigma$, $\epsilon$ & $|\eta\sigma| = (8,2)$, $|\epsilon| = (8,3)$\\\hline
+    9 & $\pi_{0*}/\wt{2} \oplus \pi_{0*}/\wt{2} \oplus \pi_{0*}/\wt{2}$ & $\eta^2\sigma$, $\eta\epsilon$, $\mu_9$ & $|\eta^2\sigma| = (9,3)$, $|\eta\epsilon| = (8,4)$, $|\mu_9| = (9,5)$ \\\hline
+    10 & $\pi_{0*}/\wt{2}$ & $\eta\mu_9$ & $|\eta\mu_9| = (10,6)$ \\\hline
+    11 & $\pi_{0*}/\wt{2}^3$ & $\zeta$ & $|\zeta| = (11, 5)$ \\\hline
+    12 & $0$ & & \\\hline
+    13 & $0$& & \\\hline
+  \end{tabular}
+\end{center}
+
+The ext ring $\Ext_{\A}^{**}(\F_2,\F_2) \cong \pi_{**}C\tau$ has been determined in a large range through computer calculations.
+See \href{http://www.rrb.wayne.edu/papers/index.html}{Bob Bruner's webpage} and particularly ``40. The cohomology of the mod 2 Steenrod Algebra'' for this data.
+
+\begin{itemize}
+\item[(a)] Using the Ext ring data and the $\tau$-bockstein sseq
+  confirm (or correct) the entries in the table above.\footnote{Ignore convergence issues.}
+\item[(b)] Compute the ring structure in this range.
+\item[(c)] Tensoring with $C\tau$ gives a symmetric monoidal functor to an algebraic category where it should be easy to compute products and Toda brackets (though we have yet to introduce techniques to do so). Think through the details of why functors send Toda brackets to Toda brackets. Now re-examine the Toda brackets computed in Exercise sheet 2 and see how many of them you can reduce to an algebraic question.
+\end{itemize}
+
+\section{\bf Exercise 5: A bracket in $\KO$}
+
+In this exercise you will recover an instance of Moss' theorem on
 the interaction between Toda brackets and sseqs.
 
 Prove that in $\pi_*\KO$ we have
 \[ \langle 2, \eta, \eta^2 \rangle = \alpha + 2\blacksquare \]
 where $\alpha$ is a generator of $\pi_4\KO$.
 
-\section{\bf Exercise 7: The Wood cofiber sequence (ver 2)}
+For this part it will be useful to think about the filtered $\E_\infty$-algebra
+$(\tau_{\geq \bullet} \KU)^{hC_2}$ from Ex.1 and first evaluate a lift of this bracket to bigraded homotopy groups.
+It will be useful to think about the ways in which powers of $\tau$ can be added in to brackets and how this intercts with the $\tau$-bockstein sequences.
+
+
+
+\section{\bf Exercise 6: The Wood cofiber sequence (ver 2)}
 
 $\mathrm{KO}$ is an $\E_\infty$-algebra in $\Sp$ whose associated cohomology theory
 classifies stable vector bundles.
 Complexification gives a map of $\E_\infty$-algebras
 \[ \KO \to \KU. \]
+In this exercise you will prove that $\cof(\eta) \otimes \KO \cong \KU$.\footnote{The same question appeared on the previous exercise sheet, but we will follow a different approach this time.}
 
-homotopy groups of both
-
-(a) determine what the map does on homotopy.
-
-
-(b) Reduce computing cof eta homotopy to a single bracket.
-
-
-
-(c)
-
-The ring spectrum $\mathrm{KU}$ satisfies the following properties
-
-
-\section{\bf Exercise 8: $X(2)$}
+\begin{itemize}
+\item[(a)] Recall that the homotopy ring of $\KU$ is given by
+  $\pi_*\KU \cong \Z[\beta^\pm]$ where $|\beta|=2$ and
+  the homotopy ring of $\KO$ is given by
+  \[ \pi_*\KO \cong \Z[\eta, \alpha, \gamma^\pm]/(2\eta, \eta^3, \eta\alpha, \alpha^2=4\gamma). \]
+  Determine what the complexification map does on homotopy rings.
+\item[(b)] Use the fact that $\nu$ is zero in $\pi_*\KO$ to give
+  $\cof(\eta) \otimes \KO$ a unital multiplication. How many unital multiplications are there?
+\item[(c)] Use the fact that $\eta$ is zero in $\pi_*\KU$ to show that there is a unital multiplication for which there is a multiplicative map
+  $\cof(\eta) \otimes \KO \to \KU$.
+\item[(d)] Compute the homotopy groups of $\cof(\eta) \otimes \KO$
+  (use the bracket from the previous exercise).
+\item[(e)] What is the square of the generator in degree $2$ of
+  $\pi_*(\cof(\eta) \otimes \KO)$?
+\item[(f)] Conclude that $\cof(\eta) \otimes \KO \cong \KU$.
+\end{itemize}
 
 
 

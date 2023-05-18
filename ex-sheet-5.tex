@@ -1,0 +1,61 @@
+\pdfoutput=1\relax
+\documentclass[reqno]{amsart}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\input{Preamble.tex}
+\usepackage[margin=1.5in]{geometry}
+
+\newtoggle{draft}
+% NB: toggle this to hide comments
+%\togglefalse{draft}
+\toggletrue{draft}
+
+\iftoggle{draft}{
+%\usepackage{showkeys}
+\newcommand{\atodo}[1]{\todo[color=blue!40]{#1}}
+\newcommand{\ttodo}[1]{\todo[color=green!40]{#1}}
+\newcommand{\tcomment}[1]{\todo[inline,color=green!40]{#1}}
+\newcommand{\NB}[1]{\todo[color=gray!40]{#1}}
+\newcommand{\TODO}[1]{\todo[color=red]{#1}}
+}{ % else
+\newcommand{\NB}[1]{}
+\newcommand{\TODO}[1]{}
+\renewcommand{\todo}[1]{}
+\renewcommand{\todo}[1]{}
+}
+
+\title{Exercise sheet 5}
+
+%% \author{Robert Burklund}
+%% \address{Department of Mathematical Sciences, University of Copenhagen, Denmark}
+%% \email{rb@math.ku.dk}
+
+\begin{document}
+\maketitle
+
+In class we have been discussing synthetic stems.
+The ext ring $\Ext_{\A}^{**}(\F_2,\F_2) \cong \pi_{**}C\tau$ has been determined in a large range through computer calculations.
+See \href{http://www.rrb.wayne.edu/papers/index.html}{Bob Bruner's webpage} and particularly ``40. The cohomology of the mod 2 Steenrod Algebra'' for this data.
+For an Adams $E_2$-chart see the link to the charts prepared by Isaksen, Wang, Xu
+in the discord.
+
+\begin{itemize}
+\item Determine as many $\F_2$-synthetic stems as you can (and through this the classical stems as well).
+\end{itemize}
+
+Pay attention to extension problems, multiplicative structure, and Toda brackets.
+Use any of the techniques we've developed in class.
+Use as much outside knowledge as you want.
+To avoid getting stuck, I would encourage you to work non-linearly (often hard differentials / extensions have many consequences and thinking about those consequences can sometimes lead to a proof).
+
+\bibliographystyle{alpha}
+\bibliography{bibliography}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% eval: (visual-line-mode t)
+%%% eval: (auto-fill-mode 0)
+%%% End:
